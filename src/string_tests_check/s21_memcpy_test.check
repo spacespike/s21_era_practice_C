@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "../s21_string.h"
+
+#test s21_memcpy_test_1
+char src[] =
+    "The memcpy function copies N bytes/characters from a memory "
+    "location/block pointed to by source, to a memory area pointed to by "
+    "destination.  N = 139582893467-1893476-183746!";
+s21_size_t n = 10;
+char dest[n];
+char dest_etalon[n];
+char *result = (char *)s21_memcpy(dest, src, n);
+char *result_etalon = (char *)memcpy(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_memcpy_test_2
+char src[] =
+    "The memcpy function copies N bytes/characters from a memory "
+    "location/block pointed to by source, to a memory area pointed to by "
+    "destination. N = -1893476183746!";
+s21_size_t n = 500;
+char dest[n];
+char dest_etalon[n];
+char *result = (char *)s21_memcpy(dest, src, n);
+char *result_etalon = (char *)memcpy(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_memcpy_test_3
+char src[] =
+    "The memcpy function copies N bytes/characters from a memory "
+    "location/block pointed to by source, to a memory area pointed to by "
+    "destination. N = -1893476183746!";
+s21_size_t n = 0;
+char dest[n];
+char dest_etalon[n];
+char *result = (char *)s21_memcpy(dest, src, n);
+char *result_etalon = (char *)memcpy(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_memcpy_test_4
+char src[] = "";
+s21_size_t n = 0;
+char dest[n];
+char dest_etalon[n];
+char *result = (char *)s21_memcpy(dest, src, n);
+char *result_etalon = (char *)memcpy(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_memcpy_test_5
+char src[] = "\0\0\0\0\0\t\t\t\t\t";
+s21_size_t n = 7;
+char dest[n];
+char dest_etalon[n];
+char *result = (char *)s21_memcpy(dest, src, n);
+char *result_etalon = (char *)memcpy(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_memcpy_test_6
+char src[] = "!#$$%&*())_+";
+s21_size_t n = 13;
+char dest[n];
+char dest_etalon[n];
+char *result = (char *)s21_memcpy(dest, src, n);
+char *result_etalon = (char *)memcpy(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);

@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "../s21_string.h"
+
+#test s21_strrchr_test_1
+char str[] = "There is a destination string for checking!!!!";    
+char ch = 'c';
+char *result = s21_strrchr(str, ch);
+char *result_etalon = strrchr(str, ch);
+ck_assert_ptr_eq(result, result_etalon);
+
+#test s21_strrchr_test_2
+char str[] = "\0";    
+char ch = 'c';
+char *result = s21_strrchr(str, ch);
+char *result_etalon = strrchr(str, ch);
+ck_assert_ptr_eq(result, result_etalon);
+
+#test s21_strrchr_test_3
+char str[] = "There is a destination string for checking!!!!";    
+char ch = '\0';
+char *result = s21_strrchr(str, ch);
+char *result_etalon = strrchr(str, ch);
+ck_assert_ptr_eq(result, result_etalon);
+
+
+#test s21_strrchr_test_4
+char str[] = "\0";    
+char ch = '\0';
+char *result = s21_strrchr(str, ch);
+char *result_etalon = strrchr(str, ch);
+ck_assert_ptr_eq(result, result_etalon);
+
+#test s21_strrchr_test_5
+char str[] = "There is a destination stri\0ng for checking!!!!";
+char ch = 'c';
+char *result = s21_strrchr(str, ch);
+char *result_etalon = strrchr(str, ch);
+ck_assert_ptr_eq(result, result_etalon);
+
+#test s21_strrchr_test_6
+char str[] = "\0";    
+char ch = 'c';
+char *result = s21_strrchr(str, ch);
+char *result_etalon = strrchr(str, ch);
+ck_assert_ptr_eq(result, result_etalon);
+
+#test s21_strrchr_test_7
+char str[] = "\0\0\0\0\0\0 !@#$%^&*() qweasdzxc 123456789g sZc";    
+char ch = 'c';
+char *result = s21_strrchr(str, ch);
+char *result_etalon = strrchr(str, ch);
+ck_assert_ptr_eq(result, result_etalon);
+
+#test s21_strrchr_test_8
+char str[] = "!@#$%^&*()_+";    
+char ch = '+';
+char *result = s21_strrchr(str, ch);
+char *result_etalon = strrchr(str, ch);
+ck_assert_ptr_eq(result, result_etalon);
+
+#test s21_strrchr_test_9
+char str[] = "!@#$%^&*()_+";    
+char ch = '\0';
+char *result = s21_strrchr(str, ch);
+char *result_etalon = strrchr(str, ch);
+ck_assert_ptr_eq(result, result_etalon);

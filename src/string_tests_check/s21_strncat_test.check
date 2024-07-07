@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "../s21_string.h"
+
+#test s21_strncat_test_1
+char src[] =
+    "This function appends not more than n characters from the string pointed to..";
+char dest[100] = "There is a destination string for checking!!!!";
+char dest_etalon[100] = "There is a destination string for checking!!!!";    
+s21_size_t n = 10;
+char *result = (char *)s21_strncat(dest, src, n);
+char *result_etalon = (char *)strncat(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_strncat_test_2
+char src[] =
+    "This function appends not more than n characters from the string pointed to..";
+char dest[100] = "There is a destination string for checking!!!!";
+char dest_etalon[100] = "There is a destination string for checking!!!!";    
+s21_size_t n = 0;
+char *result = (char *)s21_strncat(dest, src, n);
+char *result_etalon = (char *)strncat(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_strncat_test_3
+char src[] =
+    "This function appends not more than n characters from the string pointed to..";
+char dest[150] = "There is a destination string for checking!";
+char dest_etalon[150] =  "There is a destination string for checking!";    
+s21_size_t n = 100;
+char *result = (char *)s21_strncat(dest, src, n);
+char *result_etalon = (char *)strncat(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_strncat_test_4
+char src[] =
+    "This function appends not \0 more than n characters \t from the string pointed to..";
+char dest[150] = "There is a destination string for checking!";
+char dest_etalon[150] =  "There is a destination string for checking!";    
+s21_size_t n = 100;
+char *result = (char *)s21_strncat(dest, src, n);
+char *result_etalon = (char *)strncat(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_strncat_test_5
+char src[] = "";
+char dest[150] = "There is a destination string for checking!";
+char dest_etalon[150] =  "There is a destination string for checking!";    
+s21_size_t n = 100;
+char *result = (char *)s21_strncat(dest, src, n);
+char *result_etalon = (char *)strncat(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_strncat_test_6
+char src[] = "";
+char dest[150] = "";
+char dest_etalon[150] =  "";    
+s21_size_t n = 10;
+char *result = (char *)s21_strncat(dest, src, n);
+char *result_etalon = (char *)strncat(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+#test s21_strncat_test_7
+char src[] =
+    "This function appends not \0 more than n characters \t from the string pointed to..";
+char dest[150] = "";
+char dest_etalon[150] =  "";    
+s21_size_t n = 100;
+char *result = (char *)s21_strncat(dest, src, n);
+char *result_etalon = (char *)strncat(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);
+
+
+#test s21_strncat_test_8
+char src[] =
+    "!@#$%$#&%&^*&()_12335467689UYFGIUYEGMNDCRERFaes4534545";
+char dest[250] = "There is a destination string for checking!";
+char dest_etalon[250] =  "There is a destination string for checking!";    
+s21_size_t n = 100;
+char *result = (char *)s21_strncat(dest, src, n);
+char *result_etalon = (char *)strncat(dest_etalon, src, n);
+ck_assert_str_eq(dest, dest_etalon);
+ck_assert_str_eq(result, result_etalon);

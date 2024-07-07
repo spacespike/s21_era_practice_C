@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "../s21_string.h"
+
+#test memcmp1
+char str1[] = "Hello world";
+char str2[] = "Hello world";
+s21_size_t n1 = 10;
+ck_assert_int_eq(s21_memcmp(str1, str2, n1), memcmp(str1, str2, n1));
+
+#test memcmp2
+char str1[] = "Hello world";
+char str2[] = "Hell0 world";
+s21_size_t n1 = 10;
+ck_assert_int_eq(s21_memcmp(str1, str2, n1), memcmp(str1, str2, n1));
+
+#test memcmp3
+char str1[] = "Hello world";
+char str2[] = "Hell\0world";
+s21_size_t n1 = 10;
+ck_assert_int_eq(s21_memcmp(str1, str2, n1), memcmp(str1, str2, n1));
+
+#test memcmp4
+char str1[] = "1Hello world";
+char str2[] = "Hell\0world";
+s21_size_t n1 = 11;
+ck_assert_int_eq(s21_memcmp(str1, str2, n1), memcmp(str1, str2, n1));
+
+#test memcmp5
+char str1[] = "Hello world";
+char str2[] = "Hell\0world";
+s21_size_t n1 = 2;
+ck_assert_int_eq(s21_memcmp(str1, str2, n1), memcmp(str1, str2, n1));
+
+#test memcmp6
+char str1[] = "Hello world";
+char str2[] = "Hellworld";
+s21_size_t n1 = 10;
+ck_assert_int_eq(s21_memcmp(str1, str2, n1), memcmp(str1, str2, n1));
